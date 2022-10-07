@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MenschAergerDichNicht.GameClasses
 {
-    public class Player
+    public class Dice
     {
     }
 }
