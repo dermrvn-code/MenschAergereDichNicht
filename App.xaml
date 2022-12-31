@@ -4,6 +4,206 @@
              xmlns:local="clr-namespace:MenschAergerDichNicht"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+
+        <FontFamily x:Key="Nulshock">Assets/Fonts/nulshock.otf#Nulshock Rg</FontFamily>
+
+
+
+        <Style x:Key="ImageButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <Border Name="Content" Opacity="1">
+                            <ContentPresenter />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Content" Property="Opacity" Value="0.3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+
+        <Style x:Key="WindowBarIcon" TargetType="Button" BasedOn="{StaticResource ImageButton}">
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Margin" Value="-5,10,10,10"/>
+        </Style>
+        
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="{StaticResource Nulshock}"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+
+        <Style x:Key="GameButton" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Background" Value="BlueViolet" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontFamily" Value="{StaticResource Nulshock}" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <Border Name="Content" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Content" Property="Background" Value="Purple"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="WhiteStandardText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="{StaticResource Nulshock}"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        
+        <Style x:Key="WhiteStandardLabel" TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="{StaticResource Nulshock}"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="GreyHintText" TargetType="TextBlock" BasedOn="{StaticResource WhiteStandardText}">
+            <Setter Property="HorizontalAlignment"  Value="Center"/>
+            <Setter Property="FontSize" Value="8" />
+            <Setter Property="Foreground" Value="DarkGray"/>
+        </Style>
+
+        <Style x:Key="WhiteHeader" TargetType="TextBlock" BasedOn="{StaticResource WhiteStandardText}">
+            <Setter Property="HorizontalAlignment"  Value="Center"/>
+            <Setter Property="FontSize" Value="32" />
+
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                      ShadowDepth="3"
+                      Direction="270"
+                      Color="Violet"
+                      Opacity="0.4"
+                      BlurRadius="3"/>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <Style x:Key="WhiteSubHeader" TargetType="TextBlock" BasedOn="{StaticResource WhiteStandardText}">
+            <Setter Property="HorizontalAlignment"  Value="Center"/>
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+
+
+        <Style TargetType="RadioButton">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+
+                        <BulletDecorator Background="Transparent" Cursor="Hand">
+                            <BulletDecorator.Bullet>
+                                <Grid Height="25" Width="25">
+                                    <Border Name="RadioOuter" BorderBrush="White" Background="Transparent" BorderThickness="3" CornerRadius="50"/>
+                                    <Border CornerRadius="50" Margin="7" Name="RadioMark" Background="White" Visibility="Hidden" />
+                                </Grid>
+                            </BulletDecorator.Bullet>
+
+                            <ContentPresenter Margin="10,0,0,0"/>
+
+                        </BulletDecorator>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="RadioMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+
+        </Style>
+
+        <Style x:Key="ImageCheckbox" TargetType="CheckBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+
+                        <Border Name="Content" Opacity="0.25">
+                            <ContentPresenter />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="Content" Property="Opacity" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ImageRadiobutton" TargetType="RadioButton">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+
+                        <Border Name="Content" Opacity="0.2">
+                            <ContentPresenter/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="Content" Property="Opacity" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
     </Application.Resources>
 </Application>

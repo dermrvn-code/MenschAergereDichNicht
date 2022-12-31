@@ -1,0 +1,167 @@
+﻿<Window x:Class="MenschAergerDichNicht.GameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MenschAergerDichNicht"
+        mc:Ignorable="d" KeyDown="Window_KeyDown" Icon="Assets/Images/icon.ico"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowState="Normal" WindowStyle="None"
+        Title="Mensch Ärger Dich Nicht" Height="700" Width="700">
+
+    <Window.Background>
+        <VisualBrush Stretch="Fill">
+            <VisualBrush.Visual>
+                <Image Source="Assets/Images/stars.png" Opacity=".2"/>
+            </VisualBrush.Visual>
+        </VisualBrush>
+
+    </Window.Background>
+
+    <Window.Resources>
+
+        <DataTemplate x:Key="scoreboardItem">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Rectangle Width="50" Height="50">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="{Binding Color}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.OpacityMask>
+                        <ImageBrush ImageSource="{Binding Icon}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <DockPanel HorizontalAlignment="Stretch"
+           VerticalAlignment="Stretch"
+           LastChildFill="True">
+
+        <Grid DockPanel.Dock="Top"
+          HorizontalAlignment="Right">
+
+            <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+
+                <Button x:Name="MinimizeButton"
+                    KeyboardNavigation.IsTabStop="False"
+                    Click="MinimizeWindow" Style="{StaticResource WindowBarIcon}">
+                    <Image Source="Assets/Images/minimize.png" />
+                </Button>
+
+                <Button x:Name="CloseButton"
+                    KeyboardNavigation.IsTabStop="False"
+                    Click="CloseApplication" Style="{StaticResource WindowBarIcon}">
+                    <Image Source="Assets/Images/close.png" />
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
+
+        <Grid x:Name="wrapper" MaxWidth="700">
+
+            <Grid.Background>
+                <VisualBrush Stretch="UniformToFill">
+                    <VisualBrush.Visual>
+                        <Image Source="Assets/Images/nightsky.png" Opacity=".3" x:Name="bg">
+                            <Image.RenderTransform>
+                                <RotateTransform CenterX="0" CenterY="0" Angle="0" />
+                            </Image.RenderTransform>
+                            <Image.Triggers>
+                                <EventTrigger RoutedEvent="Image.Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                                            Storyboard.TargetName="bg"
+                                            Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
+                                            From="0" To="360" Duration="0:0:59" 
+                                            RepeatBehavior="Forever"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Grid.Background>
+
+            <Grid Panel.ZIndex="10" Visibility="Hidden" x:Name="overlay">
+                <Grid.Background>
+                    <SolidColorBrush Color="black" Opacity=".75"/>
+                </Grid.Background>
+                <TextBlock Style="{StaticResource WhiteSubHeader}" FontSize="32" TextWrapping="Wrap" x:Name="overlayText" TextAlignment="Center" Margin="50,0" HorizontalAlignment="Stretch"/>
+            </Grid>
+
+            <Grid x:Name="grid" Margin="0,0,25,25" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+
+                <Canvas MouseLeftButtonDown="cnv_MouseLeftButtonDown" Name="mainCanvas" Grid.Row="0" Grid.Column="0">
+                </Canvas>
+
+                <StackPanel Grid.Row="0" Grid.Column="1" >
+                    <TextBlock Style="{StaticResource WhiteStandardText}" FontSize="9"  HorizontalAlignment="Center" Margin="0,20,0,5">Scoreboard</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource WhiteStandardText}" FontSize="20" Margin="0,30,10,15"
+                           Text="1." />
+
+                            <TextBlock Style="{StaticResource WhiteStandardText}" FontSize="20" Margin="0,30,10,15"
+                           Text="2."/>
+
+                            <TextBlock Style="{StaticResource WhiteStandardText}" FontSize="20" Margin="0,30,10,15"
+                           Text="3."/>
+
+                            <TextBlock Style="{StaticResource WhiteStandardText}" FontSize="20" Margin="0,30,10,15"
+                           Text="4."/>
+                        </StackPanel>
+
+                        <ItemsControl Width="Auto" x:Name="scoreboard" ItemsSource="{Binding ScoreboardList}" ItemTemplate="{StaticResource scoreboardItem}"/>
+                    </StackPanel>
+                </StackPanel>
+
+
+
+
+
+                <Grid Margin="40,0,0,0" Grid.Row="1" Grid.Column="0" >
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle x:Name="PlayerIconColor" Fill="White" Margin="0,0,10,0">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush x:Name="PlayerIcon" ImageSource="Assets/Images/Playericons/ship1.png"/>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+
+                    <TextBlock Foreground="White" FontSize="18" Grid.Column="1" VerticalAlignment="Center" x:Name="BottomTextBar" FontFamily="{StaticResource Nulshock}">
+                    Hello World
+                    </TextBlock>
+                </Grid>
+
+
+                <Button Style="{StaticResource ImageButton}" x:Name="rollDiceBtn" Grid.Row="1" Grid.Column="1">
+                    <Image Source="Assets/Images/Dice/roll.png" x:Name="diceImage"/>
+                </Button>
+            </Grid>
+
+        </Grid>
+
+    </DockPanel>
+
+
+</Window>

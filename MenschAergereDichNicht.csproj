@@ -1,0 +1,123 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\background.mp4" />
+    <None Remove="Assets\Fonts\nulshock.otf" />
+    <None Remove="Assets\Images\astronaut.png" />
+    <None Remove="Assets\Images\autorollicon.png" />
+    <None Remove="Assets\Images\background.jpg" />
+    <None Remove="Assets\Images\cheaticon.ico" />
+    <None Remove="Assets\Images\close.png" />
+    <None Remove="Assets\Images\Dice\1.png" />
+    <None Remove="Assets\Images\Dice\2.png" />
+    <None Remove="Assets\Images\Dice\3.png" />
+    <None Remove="Assets\Images\Dice\4.png" />
+    <None Remove="Assets\Images\Dice\5.png" />
+    <None Remove="Assets\Images\Dice\6.png" />
+    <None Remove="Assets\Images\Dice\roll.png" />
+    <None Remove="Assets\Images\icon.ico" />
+    <None Remove="Assets\Images\minimize.png" />
+    <None Remove="Assets\Images\nightsky.png" />
+    <None Remove="Assets\Images\Playericons\ship1.png" />
+    <None Remove="Assets\Images\Playericons\ship2.png" />
+    <None Remove="Assets\Images\Playericons\ship3.png" />
+    <None Remove="Assets\Images\Playericons\ship4.png" />
+    <None Remove="Assets\Images\Playericons\ship5.png" />
+    <None Remove="Assets\Images\Playericons\ship6.png" />
+    <None Remove="Assets\Images\Playericons\ship7.png" />
+    <None Remove="Assets\Images\Playericons\ship8.png" />
+    <None Remove="Assets\Images\stars.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Images\autorollicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\cheaticon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\minimize.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\nightsky.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Playericons\ship1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Playericons\ship2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Playericons\ship3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Playericons\ship4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Playericons\ship5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Playericons\ship6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Playericons\ship7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Playericons\ship8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\stars.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Videos\background.mp4">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Images\Dice\1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Dice\2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Dice\3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Dice\4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Dice\5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Dice\6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Dice\roll.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Fonts\nulshock.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\astronaut.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

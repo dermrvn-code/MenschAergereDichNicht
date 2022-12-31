@@ -1,0 +1,54 @@
+﻿<Window x:Class="MenschAergerDichNicht.CheatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MenschAergerDichNicht"
+        mc:Ignorable="d" Icon="Assets/Images/cheaticon.ico"
+        Left="10" Top="10" ResizeMode="NoResize" WindowState="Normal"
+        Title="Cheat Menü" Height="450" Width="200" Background="LightGray">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="15,10,15,5" />
+            <Setter Property="Padding" Value="5,5,5,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="DarkCyan" />
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <Button Content="1" Click="OnSpecificRoll"/>
+            <Button Content="2" Click="OnSpecificRoll"/>
+            <Button Content="3" Click="OnSpecificRoll"/>
+            <Button Content="4" Click="OnSpecificRoll"/>
+            <Button Content="5" Click="OnSpecificRoll"/>
+            <Button Content="6" Click="OnSpecificRoll"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox x:Name="rollInput" MaxLength="2" Width="50" TextAlignment="Center" VerticalAlignment="Center" Padding="5 3"></TextBox>
+            <Button Content="Zahl werfen" Click="ChangeJump" FontSize="8" Height="Auto" Padding="10 3" Margin="10 0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" >
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,5">Spieler wechseln:</TextBlock>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Content="1" Click="ChangePlayer" Background="Red" Margin="5"/>
+                <Button Content="2" Click="ChangePlayer" Background="Yellow" Margin="5"/>
+                <Button Content="3" Click="ChangePlayer" Background="LawnGreen" Margin="5"/>
+                <Button Content="4" Click="ChangePlayer" Background="CornflowerBlue" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+</Window>

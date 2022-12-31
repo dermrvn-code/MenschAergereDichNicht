@@ -4,9 +4,219 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MenschAergerDichNicht"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        mc:Ignorable="d" Icon="Assets/Images/icon.ico" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowState="Normal"
+        Title="Mensch Ärger Dich Nicht" Height="600" Width="700">
 
-    </Grid>
+
+    <Window.Background>
+        <VisualBrush Stretch="Fill">
+            <VisualBrush.Visual>
+                <Image Source="Assets/Images/stars.png" Opacity=".2"/>
+            </VisualBrush.Visual>
+        </VisualBrush>
+
+    </Window.Background>
+
+    <Window.Resources>
+
+        <DataTemplate x:Key="playerItem">
+            <DockPanel Margin="5" Width="300">
+                <DockPanel.Background>
+                    <SolidColorBrush Color="LightGray" Opacity=".2"/>
+                </DockPanel.Background>
+                
+                <Rectangle Width="40" Height="40" HorizontalAlignment="Right" Margin="5">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="{Binding Color}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.OpacityMask>
+                        <ImageBrush ImageSource="{Binding Icon}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                
+                <Image Opacity="{Binding Opacity}" Source="Assets/Images/autorollicon.png" Width="20" Height="20" Margin="0,0,10,0"/>
+                
+                <TextBlock Style="{StaticResource WhiteStandardText}" Text="{Binding Name}" HorizontalAlignment="Center"/>
+
+
+                <Button HorizontalAlignment="Right" Background="Transparent" Style="{StaticResource ImageButton}" 
+                        BorderThickness="0" Margin="20,5,5,5" Tag="{Binding Name}" Click="RemovePlayer">
+                    <Image Source="Assets/Images/close.png" Width="25"/>
+                </Button>
+            </DockPanel>
+        </DataTemplate>
+    </Window.Resources>
+    
+
+    <DockPanel HorizontalAlignment="Stretch"
+           VerticalAlignment="Stretch"
+           LastChildFill="True">
+
+
+        <Grid DockPanel.Dock="Top"
+          HorizontalAlignment="Right">
+
+            <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+
+
+                <Button x:Name="MinimizeButton"
+                    KeyboardNavigation.IsTabStop="False"
+                    Click="MinimizeWindow" Style="{StaticResource WindowBarIcon}">
+                    <Image Source="Assets/Images/minimize.png" />
+                </Button>
+
+                <Button x:Name="CloseButton"
+                    KeyboardNavigation.IsTabStop="False"
+                    Click="CloseApplication" Style="{StaticResource WindowBarIcon}">
+                    <Image Source="Assets/Images/close.png" />
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid Margin="30,0,30,30">
+
+            <Grid.Background>
+                <VisualBrush Stretch="UniformToFill">
+                    <VisualBrush.Visual>
+                        <Image Source="Assets/Images/nightsky.png" Opacity=".1" x:Name="bg">
+                            <Image.RenderTransform>
+                                <RotateTransform CenterX="0" CenterY="0" Angle="0" />
+                            </Image.RenderTransform>
+                            <Image.Triggers>
+                                <EventTrigger RoutedEvent="Image.Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                                                Storyboard.TargetName="bg"
+                                                Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
+                                                From="0" To="360" Duration="0:0:59" 
+                                                RepeatBehavior="Forever"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Grid.Background>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+
+                <RowDefinition Height="2*"/>
+
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource WhiteHeader}" Grid.ColumnSpan="3">
+            
+                Mensch Ärgere Dich Nicht
+            </TextBlock>
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="0,20">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <StackPanel Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource WhiteSubHeader}">4 Spieler</TextBlock>
+                    <TextBlock Style="{StaticResource GreyHintText}">Die Restlichen Spieler werden zu Bots</TextBlock>
+                </StackPanel>
+
+                <Button Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" 
+                        Style="{StaticResource ImageButton}" Click="OpenAddPlayerWindow">
+                    <StackPanel Orientation="Vertical" Background="Purple">
+                        <Image Source="Assets/Images/close.png"  Width="30" RenderTransformOrigin=".5,.5" Margin="5,5,5,0">
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="45" />
+                            </Image.RenderTransform>
+                        </Image>
+                        <TextBlock Style="{StaticResource GreyHintText}" Margin="5,0,5,5">Hinzufügen</TextBlock>
+                    </StackPanel>
+                </Button>
+
+
+
+
+                <ItemsControl Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    x:Name="players" ItemsSource="{Binding PlayerData}" ItemTemplate="{StaticResource playerItem}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource WhiteSubHeader}">Spielmodus:</TextBlock>
+
+                <RadioButton Grid.Row="1" Grid.Column="0" GroupName="GameMode" Checked="OnSelectMode" Tag="normal" IsChecked="True">
+
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource WhiteStandardText}" Text="Normaler Modus"/>
+                        <TextBlock  Style="{StaticResource GreyHintText}">
+                            <Run Text="{Binding NormalModeBoardSizeFields, Mode=OneWay}"/>
+                            <Run Text=" Felder großes Brett"/>
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Grid.Row="1" Grid.Column="1" GroupName="GameMode" Checked="OnSelectMode" Tag="large">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource WhiteStandardText}" Text="Großer Modus"/>
+                        <TextBlock  Style="{StaticResource GreyHintText}">
+                            <Run Text="{Binding LargeModeBoardSizeFields, Mode=OneWay}"/>
+                            <Run Text=" Felder großes Brett"/>
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Grid.Row="1" Grid.Column="3" GroupName="GameMode" Checked="OnSelectMode" Tag="huge">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource WhiteStandardText}" Text="Riesiger Modus"/>
+                        <TextBlock  Style="{StaticResource GreyHintText}">
+                            <Run Text="{Binding HugeModeBoardSizeFields, Mode=OneWay}"/>
+                            <Run Text=" Felder großes Brett"/>
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+            </Grid>
+
+
+            <Button Content="Spiel starten" Click="OpenGame" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="10" 
+                    Style="{StaticResource GameButton}" Padding="40,20"/>
+
+
+
+        </Grid>
+    </DockPanel>
 </Window>

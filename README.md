@@ -1,36 +1,19 @@
 
 <div align="center">	
 
-# Mensch Ärger Dich Nicht
+# Mensch Ärgere Dich Nicht
 	
-![Own Information](https://img.shields.io/badge/own-information-orange?style=for-the-badge)
+![University Project](https://img.shields.io/badge/university-project-orange?style=for-the-badge)
 	
-Short description of the project
+It's my interpretation of the classic Ludo or as called in Germany "Mensch Ärgere Dich Nicht".
 	
-[Setup](#setup) • [Installation](#installation) • [More](#more) • [Remarks](#remarks)
+[Setup](#setup)
 </div>
-
-
 
 ## Setup
 
-Here you can describe how to setup the code/project to edit or work with.
+You can just open the project in Visual Studio an hit run. Or you take the .exe file out of the bin/releases/ folder and start it.
 
-## Installation
-
-Here you can describe how to install this project and use it.
-
-## More
-
-Here you can add some more sections depending on your project. 
-
-## Remarks
-
-Here you can write some more remarks about the repo.
-
-### License
-
-See the License [here](LICENSE)
 
 ---
-&copy; 2022 Marvin Grunwald
+&copy; 2023 Marvin Grunwald
